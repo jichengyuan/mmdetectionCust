@@ -59,7 +59,7 @@
       "date_captured": "2013-11-16 16:22:20",
       "flickr_url": "http://farm5.staticflickr.com/4037/4455673413_cbb91bb389_z.jpg",
       "id": 360449,
-      "image_path": "/content/mmdetectionCust/data/CocoCust/train2017/000000360449.jpg"
+      "image_path": "/content/mmdetectionCust/testData/CocoCust/train2017/000000360449.jpg"
     },
     {
       "license": 4,
@@ -70,7 +70,7 @@
       "date_captured": "2013-11-15 01:28:33",
       "flickr_url": "http://farm6.staticflickr.com/5194/7180047202_a5702df5f5_z.jpg",
       "id": 196610,
-      "image_path": "/content/mmdetectionCust/data/CocoCust/train2017/000000196610.jpg"
+      "image_path": "/content/mmdetectionCust/testData/CocoCust/train2017/000000196610.jpg"
     },
     {
       "license": 4,
@@ -81,7 +81,7 @@
       "date_captured": "2013-11-19 18:18:08",
       "flickr_url": "http://farm6.staticflickr.com/5442/8788408976_ea7aebc555_z.jpg",
       "id": 360452,
-      "image_path": "/content/mmdetectionCust/data/CocoCust/train2017/000000360452.jpg"
+      "image_path": "/content/mmdetectionCust/testData/CocoCust/train2017/000000360452.jpg"
     },
     {
       "license": 1,
@@ -92,7 +92,7 @@
       "date_captured": "2013-11-17 11:02:33",
       "flickr_url": "http://farm9.staticflickr.com/8529/8610710338_f11b46360b_z.jpg",
       "id": 32773,
-      "image_path": "/content/mmdetectionCust/data/CocoCust/train2017/000000032773.jpg"
+      "image_path": "/content/mmdetectionCust/testData/CocoCust/train2017/000000032773.jpg"
     },
     {
       "license": 6,
@@ -103,7 +103,7 @@
       "date_captured": "2013-11-15 00:18:09",
       "flickr_url": "http://farm9.staticflickr.com/8195/8144964289_6d428f8fd8_z.jpg",
       "id": 294918,
-      "image_path": "/content/mmdetectionCust/data/CocoCust/train2017/000000294918.jpg"
+      "image_path": "/content/mmdetectionCust/testData/CocoCust/train2017/000000294918.jpg"
     },
     {
       "license": 1,
@@ -114,7 +114,7 @@
       "date_captured": "2013-11-20 05:50:03",
       "flickr_url": "http://farm5.staticflickr.com/4028/4549977479_547e6b22ae_z.jpg",
       "id": 262148,
-      "image_path": "/content/mmdetectionCust/data/CocoCust/train2017/000000262148.jpg"
+      "image_path": "/content/mmdetectionCust/testData/CocoCust/train2017/000000262148.jpg"
     },
     {
       "license": 4,
@@ -125,7 +125,7 @@
       "date_captured": "2013-11-16 12:56:28",
       "flickr_url": "http://farm9.staticflickr.com/8375/8505620041_be73c38a0c_z.jpg",
       "id": 229415,
-      "image_path": "/content/mmdetectionCust/data/CocoCust/train2017/000000229415.jpg"
+      "image_path": "/content/mmdetectionCust/testData/CocoCust/train2017/000000229415.jpg"
     },
     {
       "license": 1,
@@ -136,7 +136,7 @@
       "date_captured": "2013-11-17 13:13:02",
       "flickr_url": "http://farm9.staticflickr.com/8444/7753071678_e675360c5a_z.jpg",
       "id": 229391,
-      "image_path": "/content/mmdetectionCust/data/CocoCust/train2017/000000229391.jpg"
+      "image_path": "/content/mmdetectionCust/testData/CocoCust/train2017/000000229391.jpg"
     },
     {
       "license": 4,
@@ -147,7 +147,7 @@
       "date_captured": "2013-11-16 12:52:42",
       "flickr_url": "http://farm1.staticflickr.com/18/24184323_fe54516293_z.jpg",
       "id": 458772,
-      "image_path": "/content/mmdetectionCust/data/CocoCust/train2017/000000458772jpg"
+      "image_path": "/content/mmdetectionCust/testData/CocoCust/train2017/000000458772jpg"
     }
   ],
   "annotations": [
