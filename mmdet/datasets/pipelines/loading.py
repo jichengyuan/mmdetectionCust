@@ -143,7 +143,7 @@ class LoadImageFromSeparatedFile:
         return repr_str
 
 @PIPELINES.register_module()
-class LoadImageFromServer:
+class LoadImageFromWeb:
     """Load an image from file.
 
     Required keys are "img_prefix" and "img_info" (a dict that must contain the
@@ -184,7 +184,7 @@ class LoadImageFromServer:
         if self.file_client is None:
             self.file_client = mmcv.FileClient(**self.file_client_args)
     
-        filename = results['img_info']['flickr_url']
+        filename = results['img_info']['url']
 
         img_bytes = self.file_client.get(filename)
         img = mmcv.imfrombytes(img_bytes, flag=self.color_type)
