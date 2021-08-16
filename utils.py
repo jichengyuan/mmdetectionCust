@@ -100,8 +100,7 @@ def check_download_images(imgs_info):
                 print(e)
 
 
-def check_anno_index(json_file):
-    anno = json.load(json_file)
+def check_anno_index(anno):
     annotations = anno['annotations']
     categories = anno['categories']
     if categories[0]['id'] == 0:
