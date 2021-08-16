@@ -1,9 +1,11 @@
+import mmcv
 import numpy as np
 from sklearn.model_selection import train_test_split
 import funcy
 from tabulate import tabulate
 import coloredlogs, logging
 import itertools, os, json, urllib.request
+import cv2
 
 coloredlogs.install()
 
@@ -98,6 +100,12 @@ def check_download_images(imgs_info):
             except Exception as e:
                 print("Error occurred when downloading image: {}, error message:".format(img_info['file_name']))
                 print(e)
+        img = cv2.imread(image_path, -1)
+        dim = (img.shape[1], img.shape[0])
+        dim_origin = (img_info['width'], img_info['height'])
+        if dim != dim_origin:
+            img = cv2.resize(img, dim_origin, cv2.INTER_AREA)
+            cv2.imwrite(image_path, img)
 
 
 def check_anno_index(path_to_anno):
@@ -117,6 +125,6 @@ def check_anno_index(path_to_anno):
     anno_sorted_index = {
         "images": anno['images'],
         "annotations": annotations,
-        "categoreis": categories
+        "categories": categories
     }
     return index_start_zero, anno_sorted_index
