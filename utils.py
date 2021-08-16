@@ -95,4 +95,4 @@ def check_download_images(imgs_info):
             continue
         else:
             os.makedirs(f_path, exist_ok=True)
-            urllib.request(image_url, image_path)
+            urllib.request.urlretrieve(image_url, image_path)
