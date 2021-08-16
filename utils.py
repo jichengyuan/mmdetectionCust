@@ -71,8 +71,6 @@ def dataset_split(annotation_file, path_to_train, path_to_test, ratio):
     with open(annotation_file, 'rt') as annotations:
         coco = json.load(annotations)
         images = coco['images']
-        # for image in coco["images"]:
-        #     imgage=root_path+image
 
         annotations = coco['annotations']
         categories = coco['categories']
@@ -100,3 +98,22 @@ def check_download_images(imgs_info):
             except Exception as e:
                 print("Error occurred when downloading image: {}, error message:".format(img_info['file_name']))
                 print(e)
+
+
+def check_anno_index(json_file):
+    anno = json.load(json_file)
+    annotations = anno['annotations']
+    categories = anno['categories']
+    if categories[0]['id'] == 0:
+        return anno
+    else:
+        for category in categories:
+            category['id'] += 1
+        for annotation in annotations:
+            annotation['category_id'] += 1
+    anno_sorted_index = {
+        "images": anno['images'],
+        "annotations": annotations,
+        "categoreis": categories
+    }
+    return anno_sorted_index
