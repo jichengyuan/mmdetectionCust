@@ -95,4 +95,8 @@ def check_download_images(imgs_info):
             continue
         else:
             os.makedirs(f_path, exist_ok=True)
-            urllib.request.urlretrieve(image_url, image_path)
+            try:
+                urllib.request.urlretrieve(image_url, image_path)
+            except Exception as e:
+                print("Error occurred when downloading image: {}, error message:".format(img_info['file_name']))
+                print(e)
