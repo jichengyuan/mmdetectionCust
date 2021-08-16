@@ -100,12 +100,16 @@ def check_download_images(imgs_info):
                 print(e)
 
 
-def check_anno_index(anno):
+def check_anno_index(path_to_anno):
+    with open(path_to_anno) as coco_format_anno:
+        anno = json.load(coco_format_anno)
     annotations = anno['annotations']
     categories = anno['categories']
-    if categories[0]['id'] == 0:
-        return anno
+    index_start_zero = False
+    if categories[0]['id'] != 0:
+        return index_start_zero, anno
     else:
+        index_start_zero = True
         for category in categories:
             category['id'] += 1
         for annotation in annotations:
@@ -115,4 +119,4 @@ def check_anno_index(anno):
         "annotations": annotations,
         "categoreis": categories
     }
-    return anno_sorted_index
+    return index_start_zero, anno_sorted_index
