@@ -8,6 +8,8 @@ import itertools, os, json, urllib.request
 import cv2
 
 coloredlogs.install()
+logging.basicConfig(format='[%(asctime)s : %(message)s %(filename)s]',
+                    log_colors='green', loglevel=logging.ERROR)
 
 
 def check_instances_categories(file, annotations, class_names):
@@ -87,6 +89,7 @@ def dataset_split(annotation_file, path_to_train, path_to_test, ratio):
 
 
 def check_download_images(imgs_info):
+    download_error = {}
     for img_info in imgs_info:
         image_path = img_info['image_path']
         image_url = img_info['url']
@@ -98,14 +101,20 @@ def check_download_images(imgs_info):
             try:
                 urllib.request.urlretrieve(image_url, image_path)
             except Exception as e:
-                print("Error occurred when downloading image: {}, error message:".format(img_info['file_name']))
-                print(e)
+                download_error[img_info['file_name']] = image_path
+                continue
         img = cv2.imread(image_path, -1)
         dim = (img.shape[1], img.shape[0])
         dim_origin = (img_info['width'], img_info['height'])
         if dim != dim_origin:
             img = cv2.resize(img, dim_origin, cv2.INTER_AREA)
             cv2.imwrite(image_path, img)
+
+    for img_dir in download_error.values():
+        print('\n' + 'The image " ' + img_dir + ' " is not exist.')
+    logging.info('\n' + 'You need to download those images by yourself to: ' + f_path + '\n')
+    
+    # hints: provide with links and tell users which datasets they need to download and where to download them
 
 
 def check_anno_index(path_to_anno):
@@ -128,3 +137,16 @@ def check_anno_index(path_to_anno):
         "categories": categories
     }
     return index_start_zero, anno_sorted_index
+
+
+def images_categories_distribution(path_to_anno):
+    """
+        analysis the images and categories distributions of mixedDatasets
+        1. draw a pie figure for images distribution
+        2. draw a histogram for categories distribution
+        3. .. other better visualization and analysis for mixedDatasets
+        4. could also be used to analysis the detected performance in different datasets
+
+    """
+
+    pass
