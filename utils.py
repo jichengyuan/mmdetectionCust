@@ -146,7 +146,16 @@ def images_categories_distribution(path_to_anno):
         2. draw a histogram for categories distribution
         3. .. other better visualization and analysis for mixedDatasets
         4. could also be used to analysis the detected performance in different datasets
+		
+		Note: which need to the source of specific image
+    """
 
+    pass
+	
+	
+def image_from_google_drive(img_info):
+    """
+		also need to the source of specific image
     """
 
     pass
