@@ -4,6 +4,8 @@
 
 **News**: Technical report on [ArXiv](https://arxiv.org/abs/1906.07155).
 
+[![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://www.youtube.com/watch?v=JzsGHWqRJDk)
+
 Documentation: https://mmdetection.readthedocs.io/
 
 ## I. Quick-start on VNC ([based on example-annos](https://gitlab.tubit.tu-berlin.de/bifold/dataloader/tree/master/coco_anno_examples5))
