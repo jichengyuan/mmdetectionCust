@@ -4,7 +4,7 @@
 
 **News**: Technical report on [ArXiv](https://arxiv.org/abs/1906.07155).
 
-[![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://www.youtube.com/watch?v=JzsGHWqRJDk)
+[![Demo CountPages alpha](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://www.youtube.com/watch?v=JzsGHWqRJDk)
 
 Documentation: https://mmdetection.readthedocs.io/
 
