@@ -4,7 +4,7 @@
 
 **News**: Technical report on [ArXiv](https://arxiv.org/abs/1906.07155).
 
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://user-images.githubusercontent.com/87916250/136578038-16a9fa2f-0b26-469e-a238-63041fe38d9c.mp4)
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://user-images.githubusercontent.com/87916250/136581046-6192174b-d306-4c6c-9670-c654d5728e0e.mp4)
 
 Documentation: https://mmdetection.readthedocs.io/
 
