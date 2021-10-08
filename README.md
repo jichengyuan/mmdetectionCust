@@ -4,6 +4,8 @@
 
 **News**: Technical report on [ArXiv](https://arxiv.org/abs/1906.07155).
 
+https://user-images.githubusercontent.com/87916250/136578038-16a9fa2f-0b26-469e-a238-63041fe38d9c.mp4
+
 Documentation: https://mmdetection.readthedocs.io/
 
 ## I. Quick-start on VNC ([based on example-annos](https://gitlab.tubit.tu-berlin.de/bifold/dataloader/tree/master/coco_anno_examples5))
