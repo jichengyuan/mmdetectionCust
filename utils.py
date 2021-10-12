@@ -116,7 +116,7 @@ def check_download_images(imgs_info):
             img = cv2.resize(img, dim_origin, cv2.INTER_AREA)
             cv2.imwrite(image_path, img)
     images_with_expired_urls = list(download_error.values())
-    if len(images_with_expired_urls) == 0:
+    if len(images_with_expired_urls) != 0:
         for img_dir in images_with_expired_urls:
             print('\n' + 'The image " ' + img_dir + ' " is not exist.')
         logging.info('\n' + 'You need to download those images by yourself to: ' + f_path + '\n')
