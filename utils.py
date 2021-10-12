@@ -5,6 +5,8 @@ import funcy
 from tabulate import tabulate
 import coloredlogs, logging
 import itertools, os, json, urllib.request
+from collections import OrderedDict
+from os.path import join as opj
 import cv2
 
 coloredlogs.install()
@@ -88,6 +90,68 @@ def dataset_split(annotation_file, path_to_train, path_to_test, ratio):
         save_coco(path_to_test, test, filter_annotations(annotations, test), categories)
 
 
+def dataset_split_save_colab_space(annotation_file, train_val_test, ratio):
+    with open(annotation_file, 'rt') as annotations:
+        coco = json.load(annotations)
+        images = coco['images']
+
+        annotations = coco['annotations']
+        categories = coco['categories']
+
+        images_with_annotations = funcy.lmap(lambda a: int(a['image_id']), annotations)
+        images = funcy.lremove(lambda i: i['id'] not in images_with_annotations, images)
+
+        images_trn_val_tst = {}
+
+        images_trn_val_tst["train_val"], images_trn_val_tst["test"] = train_test_split(images,
+                                                                                       train_size=ratio)
+        images_trn_val_tst["train"], images_trn_val_tst["val"] = train_test_split(
+            images_trn_val_tst["train_val"], train_size=ratio)
+
+        for set_nms in train_val_test:
+            img_ids = images_trn_val_tst[set_nms]
+            save_coco(opj(os.path.abspath(os.path.dirname(annotation_file) + os.path.sep + "."), set_nms),
+                      img_ids, filter_annotations(annotations, img_ids),
+                      categories)
+
+
+# def save_coco_all_in_one(file, images, annotations, categories):
+#     # all in one mode not finished, because i think it is a stupid method, can not be reused
+#     check_instances_categories(file, annotations, [category['name'] for category in categories])
+#     with open(file, 'wt') as coco:
+#         json.dump({'images': images, 'annotations': annotations, 'categories': categories}, coco, indent=2,
+#                   sort_keys=False)
+#
+#
+# def filter_annotations_all_in_one(annotations, images_trn_val_tst):
+#     filtered_images_trn_val_tst = OrderedDict()
+#     for set_nms, images in images_trn_val_tst():
+#         filtered_images_trn_val_tst[set_nms] = funcy.lmap(lambda i: int(i['id']), images)
+#         funcy.lfilter(lambda a: int(a['image_id']) in filtered_images_trn_val_tst[set_nms], annotations)
+#     return filtered_images_trn_val_tst
+#
+#
+# def dataset_split_all_in_one(annotation_file, train_val_test, ratio):
+#     with open(annotation_file, 'rt') as annotations:
+#         coco = json.load(annotations)
+#         images = coco['images']
+#
+#         annotations = coco['annotations']
+#         categories = coco['categories']
+#
+#         images_with_annotations = funcy.lmap(lambda a: int(a['image_id']), annotations)
+#         images = funcy.lremove(lambda i: i['id'] not in images_with_annotations, images)
+#
+#         images_trn_val_tst = OrderedDict()
+#
+#         images_trn_val_tst["images_trn_val"], images_trn_val_tst["images_tst"] = train_test_split(images,
+#                                                                                                   train_size=ratio)
+#         images_trn_val_tst["images_trn"], images_trn_val_tst["images_tst"] = train_test_split(
+#             images_trn_val_tst["images_trn_val"], train_size=ratio)
+#
+#         save_coco(train_val_test, filter_annotations_all_in_one(annotations, images_trn_val_tst), categories)
+
+
 def check_download_images(imgs_info):
     download_error = {}
     for img_info in imgs_info:
@@ -116,7 +180,7 @@ def check_download_images(imgs_info):
             img = cv2.resize(img, dim_origin, cv2.INTER_AREA)
             cv2.imwrite(image_path, img)
     images_with_expired_urls = list(download_error.values())
-    if len(images_with_expired_urls) != 0:
+    if len(images_with_expired_urls) == 0:
         for img_dir in images_with_expired_urls:
             print('\n' + 'The image " ' + img_dir + ' " is not exist.')
         logging.info('\n' + 'You need to download those images by yourself to: ' + f_path + '\n')
