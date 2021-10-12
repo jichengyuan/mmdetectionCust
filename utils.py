@@ -5,7 +5,7 @@ import funcy
 from tabulate import tabulate
 import coloredlogs, logging
 import itertools, os, json, urllib.request
-from collections import OrderedDict
+from tqdm import tqdm
 from os.path import join as opj
 import cv2
 
@@ -100,7 +100,7 @@ def dataset_split(annotation_file, train_val_test, ratio):
 
 def check_download_images(imgs_info):
     download_error = {}
-    for img_info in imgs_info:
+    for num, img_info in enumerate(tqdm(imgs_info)):
         image_path = img_info['image_path']
         if isinstance(img_info['url'], str):
             image_url = [''.join(img_info['url'])]

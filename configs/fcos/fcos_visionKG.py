@@ -92,7 +92,7 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    samples_per_gpu=1,
+    samples_per_gpu=2,
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
@@ -113,6 +113,7 @@ data = dict(
         img_prefix='/data/image_dataset/coco/',
         pipeline=test_pipeline,
         classes=classes))
+evaluation = dict(interval=1, metric='bbox',save_best='bbox_mAP')
 # optimizer
 optimizer = dict(
     lr=0.005, paramwise_cfg=dict(bias_lr_mult=2., bias_decay_mult=0.))
@@ -140,4 +141,4 @@ work_dir = './mixedDatasets/logs_visionKG/'
 load_from = 'https://openmmlab.oss-cn-hangzhou.aliyuncs.com/mmdetection/v2.0/fcos/fcos_r50_caffe_fpn_gn-head_1x_coco/fcos_r50_caffe_fpn_gn-head_1x_coco-821213aa.pth'
 out='./mixedDatasets/logs_visionKG/result_test.pkl'
 resume_from = None
-workflow = [('train', 5),('val', 1)]
+workflow = [('train', 1),('val', 1)]
