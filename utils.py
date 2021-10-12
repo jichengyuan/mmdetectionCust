@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 import funcy
 from tabulate import tabulate
 import coloredlogs, logging
-import pathlib
+from glob import glob
 import itertools, os, json, urllib.request
 from tqdm import tqdm
 from os.path import join as opj
