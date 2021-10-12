@@ -93,14 +93,20 @@ def check_download_images(imgs_info):
     for img_info in imgs_info:
         image_path = img_info['image_path']
         image_url = img_info['url']
+        download_sucess = False
         f_path = os.path.abspath(os.path.dirname(image_path) + os.path.sep + ".")
         if os.access(image_path, mode=os.R_OK):
             continue
         else:
             os.makedirs(f_path, exist_ok=True)
-            try:
-                urllib.request.urlretrieve(image_url, image_path)
-            except Exception as e:
+            for url in image_url:
+                try:
+                    urllib.request.urlretrieve(url, image_path)
+                    download_sucess = True
+                    break
+                except Exception as e:
+                    continue
+            if download_sucess is False:
                 download_error[img_info['file_name']] = image_path
                 continue
         img = cv2.imread(image_path, -1)
@@ -109,11 +115,14 @@ def check_download_images(imgs_info):
         if dim != dim_origin:
             img = cv2.resize(img, dim_origin, cv2.INTER_AREA)
             cv2.imwrite(image_path, img)
+    images_with_expired_urls = list(download_error.values())
+    if len(images_with_expired_urls) == 0:
+        for img_dir in images_with_expired_urls:
+            print('\n' + 'The image " ' + img_dir + ' " is not exist.')
+        logging.info('\n' + 'You need to download those images by yourself to: ' + f_path + '\n')
+    else:
+        logging.info('\n' + 'All the needed images have been downloaded to: ' + f_path + '\n')
 
-    for img_dir in download_error.values():
-        print('\n' + 'The image " ' + img_dir + ' " is not exist.')
-    logging.info('\n' + 'You need to download those images by yourself to: ' + f_path + '\n')
-    
     # hints: provide with links and tell users which datasets they need to download and where to download them
 
 
@@ -146,13 +155,13 @@ def images_categories_distribution(path_to_anno):
         2. draw a histogram for categories distribution
         3. .. other better visualization and analysis for mixedDatasets
         4. could also be used to analysis the detected performance in different datasets
-		
+
 		Note: which need to the source of specific image
     """
 
     pass
-	
-	
+
+
 def image_from_google_drive(img_info):
     """
 		also need to the source of specific image
