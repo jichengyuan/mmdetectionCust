@@ -7,6 +7,7 @@ _base_ = [
 # model settings
 model = dict(
     type='FCOS',
+	pretrained='open-mmlab://detectron/resnet50_caffe',
     backbone=dict(
         type='ResNet',
         depth=50,
@@ -139,4 +140,4 @@ work_dir = './mixedDatasets/logs_visionKG/'
 load_from = 'https://openmmlab.oss-cn-hangzhou.aliyuncs.com/mmdetection/v2.0/fcos/fcos_r50_caffe_fpn_gn-head_1x_coco/fcos_r50_caffe_fpn_gn-head_1x_coco-821213aa.pth'
 out='./mixedDatasets/logs_visionKG/result_test.pkl'
 resume_from = None
-workflow = [('train', 1),('val', 1)]
+workflow = [('train', 5),('val', 1)]
