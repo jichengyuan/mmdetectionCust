@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 import funcy
 from tabulate import tabulate
 import coloredlogs, logging
+import pathlib
 import itertools, os, json, urllib.request
 from tqdm import tqdm
 from os.path import join as opj
@@ -161,12 +162,14 @@ def check_anno_index(path_to_anno):
     return index_start_zero, anno_sorted_index
 
 
-def checkpoint_verify(work_dir, f_name=None):
-    if f_name is None:
-        f_name = "latest.pth"
-    checkpoint_file = os.path.join(work_dir, f_name)
-    assert os.path.isfile(checkpoint_file), '{} not exist'.format(checkpoint_file)
-    return os.path.abspath(checkpoint_file)
+def checkpoint_verify(work_dir, ckpt_file=None):
+    if ckpt_file is not None:
+        ckpt_file = os.path.join(work_dir, ckpt_file)
+    else:
+        ckpt_dirs = pathlib.Path(work_dir)
+        ckpt_file = ckpt_dirs.glob("best_bbox_mAP_epoch_*.py")
+    assert os.path.isfile(ckpt_file), '{} not exist'.format(ckpt_file)
+    return os.path.abspath(ckpt_file)
 
 
 def images_categories_distribution(path_to_anno):
