@@ -71,7 +71,7 @@ Please refer to [FAQ](docs/faq.md) for frequently asked questions.
 
 ## Acknowledgement
 
-This toolbox is modified from [MMdetection](https://github.com/open-mmlab/mmdetection). If you use this toolbox or benchmark in your research, please cite the following information.
+This toolbox is modified based on [MMdetection](https://github.com/open-mmlab/mmdetection). If you use this toolbox or benchmark in your research, please cite the following information.
 
 ```
 @article{mmdetection,
